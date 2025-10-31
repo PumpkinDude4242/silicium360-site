@@ -135,7 +135,7 @@ const onClickButton = () => {
           <div className="grid gap-10 lg:grid-cols-2 items-center">
             <div>
               <motion.h1 initial={{opacity:0, y: 10}} whileInView={{opacity:1, y:0}} viewport={{ once: true }} transition={{ duration: .5 }} className="text-4xl md:text-5xl font-extrabold text-[#1A2A3A] leading-tight">
-                La performance informatique <span className="whitespace-nowrap">sans interruption</span>
+                TEST La performance informatique <span className="whitespace-nowrap">sans interruption TEST</span>
               </motion.h1>
               <p className="mt-6 text-lg text-gray-600 max-w-prose">
                 Silicium 360 accompagne les TPE/PME dans la <strong>gestion</strong>, la <strong>maintenance</strong> et la <strong>sécurité</strong> de leurs systèmes.
