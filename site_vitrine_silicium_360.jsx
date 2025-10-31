@@ -82,7 +82,7 @@ const onSubmitCapture = (e) => {
 };
 const onClickButton = () => {
   console.log("[click] bouton submit cliqué");
-  // alert("SUBMIT BUTTON CLICK"); // décommente si tu veux un pop-up
+  alert("SUBMIT BUTTON CLICK"); // décommente si tu veux un pop-up
 };
 
   return (
