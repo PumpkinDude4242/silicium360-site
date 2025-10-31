@@ -138,8 +138,8 @@ const onClickButton = () => {
                 TEST La performance informatique <span className="whitespace-nowrap">sans interruption TEST</span>
               </motion.h1>
               <p className="mt-6 text-lg text-gray-600 max-w-prose">
-                Silicium 360 accompagne les TPE/PME dans la <strong>gestion</strong>, la <strong>maintenance</strong> et la <strong>sécurité</strong> de leurs systèmes.
-                Supervision 24/7, sauvegardes robustes, support réactif.
+               TEST Silicium 360 accompagne les TPE/PME dans la <strong>gestion</strong>, la <strong>maintenance</strong> et la <strong>sécurité</strong> de leurs systèmes.
+               TEST Supervision 24/7, sauvegardes robustes, support réactif.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a href="#contact" className="rounded-xl bg-[#1A2A3A] px-5 py-3 text-white font-semibold hover:opacity-90">Demander un devis</a>
