@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     const html = `
       <h2>Nouveau message du site Silicium 360</h2>
       <p><b>Nom & société:</b> ${escapeHtml(name)} ${company ? `(${escapeHtml(company)})` : ""}</p>
-      <p><b>Email:</b> ${escapeHtml(email)}</p>
+      <p><b>Email: TEST</b> ${escapeHtml(email)}</p>
       <p><b>Téléphone:</b> ${escapeHtml(phone || "")}</p>
       <p><b>Consentement:</b> ${consent ? "oui" : "non"}</p>
       <p><b>Page:</b> ${escapeHtml(page || "")}</p>
