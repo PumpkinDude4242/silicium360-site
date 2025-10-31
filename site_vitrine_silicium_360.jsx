@@ -45,7 +45,7 @@ const onChange = (k) => (ev) => {
 };
 
 const onSubmit = async (ev) => {
-  console.log("submit", form);
+  console.log("[submit] onSubmit déclenché");
   ev.preventDefault();
   if (!validate()) return;
   setStatus({ sending: true, ok: null, msg: "" });
@@ -75,6 +75,14 @@ const onSubmit = async (ev) => {
   } catch (err) {
     setStatus({ sending: false, ok: false, msg: err.message || "Erreur réseau" });
   }
+};
+// --- DEBUG HANDLERS ---
+const onSubmitCapture = (e) => {
+  console.log("[capture] submit event", e.type);
+};
+const onClickButton = () => {
+  console.log("[click] bouton submit cliqué");
+  // alert("SUBMIT BUTTON CLICK"); // décommente si tu veux un pop-up
 };
 
   return (
@@ -294,6 +302,7 @@ const onSubmit = async (ev) => {
             </div>
 
             <form
+   onSubmitCapture={onSubmitCapture}
   onSubmit={onSubmit}
   className="lg:col-span-2 rounded-2xl bg-white p-6 ring-1 ring-gray-100 grid grid-cols-1 gap-4"
   noValidate
@@ -377,13 +386,15 @@ const onSubmit = async (ev) => {
       />
       J'accepte d'être recontacté(e) par Silicium 360.
     </label>
-    <button
-      type="submit"
-      disabled={status.sending}
-      className="rounded-xl bg-[#1A2A3A] px-6 py-3 text-white font-semibold disabled:opacity-50 hover:opacity-90"
-    >
-      {status.sending ? "Envoi..." : "Envoyer"}
-    </button>
+   <button
+  type="submit"
+  onClick={onClickButton}
+  disabled={status.sending}
+  className="rounded-xl bg-[#1A2A3A] px-6 py-3 text-white font-semibold disabled:opacity-50 hover:opacity-90"
+>
+  {status.sending ? "Envoi..." : "Envoyer"}
+</button>
+
   </div>
   {errors.consent && <p id="err-consent" className="text-sm text-red-600">{errors.consent}</p>}
 
