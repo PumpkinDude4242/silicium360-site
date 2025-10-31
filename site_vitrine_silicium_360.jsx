@@ -293,6 +293,7 @@ const onSubmit = async (ev) => {
             </div>
 
             <form
+              console.log("submit", form);
   onSubmit={onSubmit}
   className="lg:col-span-2 rounded-2xl bg-white p-6 ring-1 ring-gray-100 grid grid-cols-1 gap-4"
   noValidate
