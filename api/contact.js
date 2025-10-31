@@ -45,7 +45,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Silicium 360 <noreply@silicium360.fr>",
+        from: "Silicium 360 <" + (process.env.SEND_FROM || "onboarding@resend.dev") + ">",
         to: [to],
         subject,
         html,
