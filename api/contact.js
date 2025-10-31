@@ -1,26 +1,30 @@
 // /api/contact.js
 export default async function handler(req, res) {
-  if (req.method !== "POST") return res.status(405).json({ error: "Method Not Allowed" });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method Not Allowed" });
+  }
 
   try {
-    const { name, email, phone, message, consent, company = "", _honeypot = "", page = "" } = req.body || {};
+    const {
+      name, email, phone, message, consent,
+      company = "", _honeypot = "", page = ""
+    } = req.body || {};
 
-    // Anti-bot simple
+    // Honeypot anti-bot
     if (_honeypot) return res.status(200).json({ ok: true });
 
-    // Validation côté serveur
+    // Validation serveur
     const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v || "");
     if (!name || !emailOk(email) || !message || !consent) {
       return res.status(400).json({ error: "Champs invalides ou manquants" });
     }
 
-    // Payload email
     const to = process.env.SEND_TO || "contact@silicium360.fr";
     const subject = `Nouveau message site — ${name}`;
     const html = `
       <h2>Nouveau message du site Silicium 360</h2>
       <p><b>Nom & société:</b> ${escapeHtml(name)} ${company ? `(${escapeHtml(company)})` : ""}</p>
-      <p><b>Email: TEST</b> ${escapeHtml(email)}</p>
+      <p><b>Email:</b> ${escapeHtml(email)}</p>
       <p><b>Téléphone:</b> ${escapeHtml(phone || "")}</p>
       <p><b>Consentement:</b> ${consent ? "oui" : "non"}</p>
       <p><b>Page:</b> ${escapeHtml(page || "")}</p>
@@ -28,14 +32,13 @@ export default async function handler(req, res) {
       <p style="white-space:pre-wrap">${escapeHtml(message)}</p>
     `;
 
-    // Envoi via Resend (si clé dispo)
+    // Envoi via Resend si la clé existe, sinon "simulé: true"
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
     if (!RESEND_API_KEY) {
-      // Pas de clé -> on "simule" un succès
       return res.status(200).json({ ok: true, simulated: true });
     }
 
-    const send = await fetch("https://api.resend.com/emails", {
+    const r = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${RESEND_API_KEY}`,
@@ -49,9 +52,9 @@ export default async function handler(req, res) {
       }),
     });
 
-    if (!send.ok) {
-      const err = await send.text();
-      return res.status(502).json({ error: "Échec d'envoi email", detail: err });
+    if (!r.ok) {
+      const detail = await r.text();
+      return res.status(502).json({ error: "Échec d'envoi email", detail });
     }
 
     return res.status(200).json({ ok: true });
@@ -61,7 +64,7 @@ export default async function handler(req, res) {
 }
 
 function escapeHtml(s = "") {
-  return s.replace(/[&<>"']/g, (c) => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-  }[c]));
+  return s.replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
+  );
 }
