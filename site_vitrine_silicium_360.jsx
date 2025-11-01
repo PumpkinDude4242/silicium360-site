@@ -1,6 +1,17 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Server, Headphones, Network, Lock, Cloud, Mail, Phone, MapPin } from "lucide-react";
+import RevealContact from "@/components/RevealContact"; // adapte le chemin si besoin
+
+
+// ⚠️ Remplace par tes vraies valeurs
+const PHONE_CLEAR = "+33 6 00 00 00 00";       // ton numéro formaté lisible
+const EMAIL_CLEAR = "contact@silicium360.fr";  // ton email
+
+// Encodage base64
+const PHONE_B64 = typeof window === "undefined" ? Buffer.from(PHONE_CLEAR).toString("base64") : btoa(PHONE_CLEAR);
+const EMAIL_B64 = typeof window === "undefined" ? Buffer.from(EMAIL_CLEAR).toString("base64") : btoa(EMAIL_CLEAR);
+
 
 // Palette (référence)
 // Bleu acier: #1A2A3A
@@ -295,8 +306,24 @@ const onClickButton = () => {
 
           <div className="grid gap-8 lg:grid-cols-3">
             <div className="rounded-2xl bg-white p-6 ring-1 ring-gray-100 space-y-4">
-              <div className="flex items-center gap-3"><Mail className="h-5 w-5 text-[#1A2A3A]"/><span>contact@silicium360.fr</span></div>
-              <div className="flex items-center gap-3"><Phone className="h-5 w-5 text-[#1A2A3A]"/><span>+33 6 00 00 00 00</span></div>
+              <div className="flex items-center gap-3">
+  <Mail className="h-5 w-5 text-[#1A2A3A]"/>
+  <RevealContact
+    kind="email"
+    valueB64={EMAIL_B64}
+    masked="cont***@silicium360.fr"
+    label="Afficher l’email"
+  />
+</div>
+              <div className="flex items-center gap-3">
+  <Phone className="h-5 w-5 text-[#1A2A3A]"/>
+  <RevealContact
+    kind="phone"
+    valueB64={PHONE_B64}
+    masked="06 ** ** ** **"
+    label="Afficher le numéro"
+  />
+</div>
               <div className="flex items-center gap-3"><MapPin className="h-5 w-5 text-[#1A2A3A]"/><span>Île‑de‑France</span></div>
               <p className="text-sm text-gray-600">Interventions à distance France entière, sur site en Île‑de‑France.</p>
             </div>
