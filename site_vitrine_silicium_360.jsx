@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Server, Headphones, Network, Lock, Cloud, Mail, Phone, MapPin } from "lucide-react";
-import RevealContact from "@/src/components/RevealContact"; // adapte le chemin si besoin
+import RevealContact from "../components/RevealContact.jsx"; // adapte le chemin si besoin
 
 
 // ⚠️ Remplace par tes vraies valeurs
