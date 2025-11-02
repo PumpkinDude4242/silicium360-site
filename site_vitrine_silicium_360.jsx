@@ -419,7 +419,7 @@ const onClickButton = () => {
   disabled={status.sending}
   className="rounded-xl bg-[#1A2A3A] px-6 py-3 text-white font-semibold disabled:opacity-50 hover:opacity-90"
 >
-  {status.sending ? "Envoi..." : "Envoyer TEST"}
+  {status.sending ? "Envoi..." : "Envoyer"}
 </button>
 
   </div>
