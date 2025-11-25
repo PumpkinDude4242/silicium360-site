@@ -69,57 +69,65 @@ export default function Silicium360Site() {
 
   const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v ?? "");
   const phoneOk = (v) => !v || v.replace(/\D/g, "").length >= 9;
+const validate = () => {
+  const e = {};
+  if (!form.name.trim()) e.name = "Nom / société requis";
+  if (!emailOk(form.email)) e.email = "Email invalide";
+  if (!phoneOk(form.phone)) e.phone = "Téléphone invalide";
+  if (!form.message.trim() || form.message.trim().length < 10)
+    e.message = "Message trop court (≥ 10 caractères)";
+  if (!form.consent) e.consent = "Consentement requis";
+  if (form._honeypot) e._honeypot = "Bot détecté";
+  setErrors(e);
+  return Object.keys(e).length === 0;
+};
 
-  const validate = () => {
-    const e = {};
-    if (!form.name.trim()) e.name = "Nom / société requis";
-    if (!emailOk(form.email)) e.email = "Email invalide";
-    if (!phoneOk(form.phone)) e.phone = "Téléphone invalide";
-    if (!form.message.trim() || form.message.trim().length < 10)
-      e.message = "Message trop court (≥ 10 caractères)";
-    if (!form.consent) e.consent = "Consentement requis";
-    if (form._honeypot) e._honeypot = "Bot détecté";
-    setErrors(e);
-    return Object.keys(e).length === 0;
-  };
+const onChange = (k) => (ev) => {
+  const v = ev?.target?.type === "checkbox" ? ev.target.checked : ev.target.value;
+  setForm((f) => ({ ...f, [k]: v }));
+};
 
-  const onChange = (k) => (ev) => {
-    const v = ev?.target?.type === "checkbox" ? ev.target.checked : ev.target.value;
-    setForm((f) => ({ ...f, [k]: v }));
-  };
+const onSubmit = async (ev) => {
+  console.log("[submit] onSubmit déclenché");
+  ev.preventDefault();
+  if (!validate()) return;
+  setStatus({ sending: true, ok: null, msg: "" });
 
-  const onSubmit = async (ev) => {
-    ev.preventDefault();
-    if (!validate()) return;
-    setStatus({ sending: true, ok: null, msg: "" });
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        message: form.message,
+        consent: form.consent,
+        company: form.company || "",
+        _honeypot: form._honeypot,
+        page: typeof window !== "undefined" ? window.location.href : "",
+      }),
+    });
 
-    // Pour la prévisualisation dans le canvas, on SIMULE juste un succès
-    setTimeout(() => {
-      setStatus({
-        sending: false,
-        ok: true,
-        msg: "Message envoyé. Merci ! Réponse sous 24h ouvrées.",
-      });
-      setForm({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-        consent: false,
-        company: "",
-        _honeypot: "",
-      });
-      setErrors({});
-    }, 800);
-  };
+    const data = await res.json();
+    if (!res.ok) throw new Error(data?.error || "Échec d’envoi");
 
-  const onSubmitCapture = (e) => {
-    console.log("[capture] submit event", e.type);
-  };
-  const onClickButton = () => {
-    console.log("[click] bouton submit cliqué");
-  };
-
+    setStatus({ sending: false, ok: true, msg: "Message envoyé. Merci ! Réponse sous 24h ouvrées." });
+    setForm({ name: "", email: "", phone: "", message: "", consent: false, company: "", _honeypot: "" });
+    setErrors({});
+  } catch (err) {
+    setStatus({ sending: false, ok: false, msg: err.message || "Erreur réseau" });
+  }
+};
+// --- DEBUG HANDLERS ---
+const onSubmitCapture = (e) => {
+  console.log("[capture] submit event", e.type);
+};
+const onClickButton = () => {
+  console.log("[click] bouton submit cliqué");
+  //alert("SUBMIT BUTTON CLICK"); // décommente si tu veux un pop-up
+};
+  
   const fadeUp = (delay = 0) => ({
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
