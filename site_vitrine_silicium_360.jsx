@@ -143,11 +143,13 @@ const onClickButton = () => {
 
       {/* HEADER */}
       <header className="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
-      <img
-          src="/rabbit_logo_white_on_dark.svg"
-          alt="Logo Silicium 360"
-          className="h-9 w-9 object-contain"
-                          />
+      <div className="relative h-9 w-9 overflow-hidden rounded-2xl bg-slate-900 ring-2 ring-slate-300/50">
+  <div className="absolute inset-0 bg-[conic-gradient(from_140deg_at_50%_50%,#4B8DF8,#22c55e,#4B8DF8)] opacity-80" />
+  <div className="relative flex h-full w-full items-center justify-center">
+    <span className="text-xs font-black tracking-[0.12em] text-slate-950">360</span>
+  </div>
+</div>
+
 
             <div className="leading-tight">
               <div className="text-lg font-semibold tracking-[0.2em] text-slate-50">SILICIUM 360</div>
