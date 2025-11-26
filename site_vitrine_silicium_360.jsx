@@ -143,70 +143,64 @@ const onClickButton = () => {
 
       {/* HEADER */}
       <header className="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
-      <div className="relative h-9 w-9 overflow-hidden rounded-2xl bg-slate-900 ring-2 ring-slate-300/50">
-  <div className="absolute inset-0 bg-[conic-gradient(from_140deg_at_50%_50%,#4B8DF8,#22c55e,#4B8DF8)] opacity-80" />
-  <div className="relative flex h-full w-full items-center justify-center">
-    <span className="text-xs font-black tracking-[0.12em] text-slate-950">360</span>
-  </div>
-</div>
+  <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
+    <a href="#top" className="flex items-center gap-3" aria-label="Silicium 360 — Accueil">
+      <img
+        src="/rabbit_logo_white_on_dark.svg"
+        alt="Logo Silicium 360"
+        className="h-9 w-9 object-contain"
+      />
 
-            <div className="leading-tight">
-              <div className="text-lg font-semibold tracking-[0.2em] text-slate-50">SILICIUM 360</div>
-              <div className="text-[11px] uppercase tracking-[0.18em] text-slate-400">Infogérance & services IT</div>
-            </div>
-          </a>
-
-          <nav className="hidden items-center gap-8 text-sm text-slate-300 md:flex">
-            <a href="#services" className="hover:text-white">Services</a>
-            <a href="#process" className="hover:text-white">Méthode</a>
-            <a href="#expertises" className="hover:text-white">Expertises</a>
-            <a href="#engagements" className="hover:text-white">Engagements</a>
-            <a
-              href="#contact"
-              className="inline-flex items-center rounded-full bg-slate-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-slate-900 hover:bg-slate-200"
-            >
-              Devis gratuit
-            </a>
-          </nav>
-
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="inline-flex items-center justify-center rounded-xl border border-slate-700 p-2 text-slate-100 md:hidden"
-            aria-label="Ouvrir le menu"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </button>
+      <div className="leading-tight">
+        <div className="text-lg font-semibold tracking-[0.2em] text-slate-50">SILICIUM 360</div>
+        <div className="text-[11px] uppercase tracking-[0.18em] text-slate-400">
+          Infogérance & services IT
         </div>
+      </div>
+    </a>
 
-        {menuOpen && (
-          <div className="border-t border-slate-800 bg-slate-950 md:hidden">
-            <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3 text-sm text-slate-200">
-              <a href="#services" onClick={() => setMenuOpen(false)} className="py-2">
-                Services
-              </a>
-              <a href="#process" onClick={() => setMenuOpen(false)} className="py-2">
-                Méthode
-              </a>
-              <a href="#expertises" onClick={() => setMenuOpen(false)} className="py-2">
-                Expertises
-              </a>
-              <a href="#engagements" onClick={() => setMenuOpen(false)} className="py-2">
-                Engagements
-              </a>
-              <a
-                href="#contact"
-                onClick={() => setMenuOpen(false)}
-                className="mt-2 inline-flex w-fit items-center rounded-full bg-slate-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-slate-900"
-              >
-                Devis gratuit
-              </a>
-            </div>
-          </div>
-        )}
-      </header>
+    <nav className="hidden items-center gap-8 text-sm text-slate-300 md:flex">
+      <a href="#services" className="hover:text-white">Services</a>
+      <a href="#process" className="hover:text-white">Méthode</a>
+      <a href="#expertises" className="hover:text-white">Expertises</a>
+      <a href="#engagements" className="hover:text-white">Engagements</a>
+      <a
+        href="#contact"
+        className="inline-flex items-center rounded-full bg-slate-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-slate-900 hover:bg-slate-200"
+      >
+        Devis gratuit
+      </a>
+    </nav>
+
+    <button
+      onClick={() => setMenuOpen(!menuOpen)}
+      className="inline-flex items-center justify-center rounded-xl border border-slate-700 p-2 text-slate-100 md:hidden"
+      aria-label="Ouvrir le menu"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    </button>
+
+  </div>
+
+  {menuOpen && (
+    <div className="border-t border-slate-800 bg-slate-950 md:hidden">
+      <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3 text-sm text-slate-200">
+        <a href="#services" onClick={() => setMenuOpen(false)} className="py-2">Services</a>
+        <a href="#process" onClick={() => setMenuOpen(false)} className="py-2">Méthode</a>
+        <a href="#expertises" onClick={() => setMenuOpen(false)} className="py-2">Expertises</a>
+        <a href="#engagements" onClick={() => setMenuOpen(false)} className="py-2">Engagements</a>
+        <a href="#contact" onClick={() => setMenuOpen(false)}
+           className="mt-2 inline-flex w-fit items-center rounded-full bg-slate-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-slate-900">
+          Devis gratuit
+        </a>
+      </div>
+    </div>
+  )}
+</header>
+
 
       <main id="top">
         {/* HERO SECTION */}
