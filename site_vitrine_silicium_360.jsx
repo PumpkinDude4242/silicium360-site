@@ -822,7 +822,7 @@ const onClickButton = () => {
             Mentions légales
               </a>
 
-            <a href="#" className="hover:text-slate-200">
+            <a href="/politique-de-confidentialite" className="hover:text-slate-200">
               Politique de confidentialité
             </a>
           </div>
