@@ -147,7 +147,7 @@ const onClickButton = () => {
 
     <a href="#top" className="flex items-center gap-3" aria-label="Silicium 360 — Accueil">
       <img
-        src="/rabbit_logo_white_on_dark.svg"
+        src="/logo.svg"
         alt="Logo Silicium 360"
         className="h-9 w-9 object-contain"
       />
