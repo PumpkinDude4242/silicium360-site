@@ -800,6 +800,83 @@ const onClickButton = () => {
         </section>
       </main>
 
+            {/* MENTIONS LÉGALES */}
+      <section
+        id="mentions-legales"
+        className="border-t border-slate-800/70 bg-slate-950 py-16 sm:py-20"
+      >
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-slate-50 mb-6">
+            Mentions légales
+          </h2>
+
+          <div className="space-y-6 text-sm text-slate-300">
+            <div>
+              <h3 className="text-lg font-semibold text-slate-100">
+                1. Éditeur du site
+              </h3>
+              <p className="mt-2">
+                <strong>Silicium 360</strong><br />
+                Entreprise individuelle – Infogérance &amp; services IT<br />
+                SIREN : (à compléter)<br />
+                Adresse : Île-de-France<br />
+                Email : contact@silicium360.fr
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-slate-100">
+                2. Hébergement
+              </h3>
+              <p className="mt-2">
+                Site hébergé par Vercel Inc.<br />
+                440 N Barranca Ave #4133, Covina, CA 91723, USA<br />
+                Site web : vercel.com
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-slate-100">
+                3. Propriété intellectuelle
+              </h3>
+              <p className="mt-2">
+                L’ensemble des contenus de ce site (textes, images, graphismes, logo, etc.)
+                est la propriété exclusive de Silicium 360, sauf mention contraire.
+                Toute reproduction, représentation ou diffusion sans autorisation écrite
+                est interdite.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-slate-100">
+                4. Données personnelles
+              </h3>
+              <p className="mt-2">
+                Les informations transmises via le formulaire de contact sont utilisées
+                uniquement pour répondre à votre demande et, le cas échéant, préparer une
+                proposition commerciale.
+              </p>
+              <p className="mt-2">
+                Vous disposez d’un droit d’accès, de rectification et de suppression
+                de vos données. Pour l’exercer, écrivez à : contact@silicium360.fr.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-slate-100">
+                5. Responsabilité
+              </h3>
+              <p className="mt-2">
+                Silicium 360 met tout en œuvre pour fournir des informations fiables.
+                Toutefois, aucune garantie n’est donnée quant à l’exactitude ou l’exhaustivité
+                des contenus. L’utilisation du site se fait sous votre seule responsabilité.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       {/* FOOTER */}
       <footer className="border-t border-slate-800 bg-slate-950/95">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-4 py-8 text-xs text-slate-400 sm:flex-row sm:px-6 lg:px-8">
@@ -818,7 +895,9 @@ const onClickButton = () => {
             </div>
           </div>
           <div className="flex gap-4 text-[11px]">
-            <a href="/mentions-legales" className="hover:text-slate-200">Mentions légales</a>
+           <a href="#mentions-legales" className="hover:text-slate-200">
+            Mentions légales
+              </a>
 
             <a href="#" className="hover:text-slate-200">
               Politique de confidentialité
