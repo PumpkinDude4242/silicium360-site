@@ -143,14 +143,12 @@ const onClickButton = () => {
 
       {/* HEADER */}
       <header className="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <a href="#top" className="flex items-center gap-3" aria-label="Silicium 360 — Accueil">
-            <div className="relative h-9 w-9 overflow-hidden rounded-2xl bg-slate-900 ring-2 ring-slate-300/50">
-              <div className="absolute inset-0 bg-[conic-gradient(from_140deg_at_50%_50%,#4B8DF8,#22c55e,#4B8DF8)] opacity-80" />
-              <div className="relative flex h-full w-full items-center justify-center">
-                <span className="text-xs font-black tracking-[0.12em] text-slate-950">360</span>
-              </div>
-            </div>
+      <img
+          src="/rabbit_logo_white_on_dark.svg"
+          alt="Logo Silicium 360"
+          className="h-9 w-9 object-contain"
+                          />
+
             <div className="leading-tight">
               <div className="text-lg font-semibold tracking-[0.2em] text-slate-50">SILICIUM 360</div>
               <div className="text-[11px] uppercase tracking-[0.18em] text-slate-400">Infogérance & services IT</div>
