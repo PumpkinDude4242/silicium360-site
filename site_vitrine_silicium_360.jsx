@@ -818,9 +818,8 @@ const onClickButton = () => {
             </div>
           </div>
           <div className="flex gap-4 text-[11px]">
-            <a href="#" className="hover:text-slate-200">
-              Mentions légales
-            </a>
+            <a href="pages/mentions-legales" className="hover:text-slate-200">Mentions légales</a>
+
             <a href="#" className="hover:text-slate-200">
               Politique de confidentialité
             </a>
