@@ -87,7 +87,7 @@ export default function MentionsLegalesPage() {
               <p className="mt-2">
                 <strong>Silicium 360</strong><br />
                 Entreprise individuelle – Infogérance &amp; services IT<br />
-                SIREN : (à compléter)<br />
+                SIREN : 913894788 <br />
                 Adresse : Île-de-France<br />
                 Email : contact@silicium360.fr
               </p>
