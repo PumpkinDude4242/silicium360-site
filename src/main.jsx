@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Silicium360Site from "./site_vitrine_silicium_360.jsx";
+import Silicium360Site from "../site_vitrine_silicium_360.jsx";
 import MentionsLegalesPage from "./pages/MentionsLegales.jsx";
 import PolitiqueConfidentialitePage from "./pages/PolitiqueConfidentialite.jsx";
 
