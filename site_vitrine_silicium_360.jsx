@@ -88,7 +88,6 @@ const onChange = (k) => (ev) => {
 };
 
 const onSubmit = async (ev) => {
-  console.log("[submit] onSubmit déclenché");
   ev.preventDefault();
   if (!validate()) return;
   setStatus({ sending: true, ok: null, msg: "" });
@@ -119,15 +118,7 @@ const onSubmit = async (ev) => {
     setStatus({ sending: false, ok: false, msg: err.message || "Erreur réseau" });
   }
 };
-// --- DEBUG HANDLERS ---
-const onSubmitCapture = (e) => {
-  console.log("[capture] submit event", e.type);
-};
-const onClickButton = () => {
-  console.log("[click] bouton submit cliqué");
-  //alert("SUBMIT BUTTON CLICK"); // décommente si tu veux un pop-up
-};
-  
+
   const fadeUp = (delay = 0) => ({
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
@@ -647,7 +638,6 @@ const onClickButton = () => {
               {/* Formulaire */}
               <motion.form
                 {...fadeUp(0.1)}
-                onSubmitCapture={onSubmitCapture}
                 onSubmit={onSubmit}
                 className="lg:col-span-2 grid grid-cols-1 gap-4 rounded-3xl border border-slate-800 bg-slate-950/80 p-5"
                 noValidate
@@ -770,7 +760,6 @@ const onClickButton = () => {
                   </label>
                   <button
                     type="submit"
-                    onClick={onClickButton}
                     disabled={status.sending}
                     className="inline-flex items-center justify-center rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-sky-400 disabled:opacity-50"
                   >
