@@ -38,7 +38,7 @@ function RevealContact({ valueB64, masked, label }) {
 }
 
 // ⚠️ Remplace par tes vraies valeurs pour le vrai site
-const PHONE_CLEAR = "+33 6 00 00 00 00"; // ton numéro formaté lisible
+const PHONE_CLEAR = "07 58 54 38 19"; // ton numéro formaté lisible
 const EMAIL_CLEAR = "contact@silicium360.fr"; // ton email
 
 // Encodage base64 (SSR safe)
