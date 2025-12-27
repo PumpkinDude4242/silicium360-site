@@ -711,7 +711,7 @@ const onSubmit = async (ev) => {
                       className={`mt-1 w-full rounded-2xl border bg-slate-950/60 px-4 py-3 text-sm text-slate-50 outline-none transition focus:ring-2 focus:ring-sky-500 ${
                         errors.phone ? "border-red-500/70" : "border-slate-700"
                       }`}
-                      placeholder="07 58 54 38 19"
+                      placeholder="06 00 00 00 00"
                       aria-invalid={!!errors.phone}
                       aria-describedby={errors.phone ? "err-phone" : undefined}
                     />
